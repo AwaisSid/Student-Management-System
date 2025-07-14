@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .registration-form {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 60px auto;
+    }
+    .registration-form h2 {
+      margin-bottom: 25px;
+      text-align: center;
+      color: #343a40;
+    }
+    .form-control:focus {
+      box-shadow: none;
+      border-color: #28a745;
+    }
+    .btn-primary {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    .btn-primary:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+  </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+<!-- Brand -->
+
+<a class="navbar-brand" href="#">Student Management System</a>
+
+<!-- Toggler/collapsibe Button -->
+
+<button class="navbar-toggler" type="button" data-toggle="collapse"
+
+data-target="#collapsibleNavbar">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<!-- Navbar links -->
+
+<div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+<ul class="navbar-nav">
+
+<li class="nav-item"><a class="nav-link" th:href="@{/students}">Student Management</a></li>
+
+</ul>
+
+</div>
+
+</nav>
+
+<div class="container">
+  <div class="registration-form">
+    <h2>Update Student Details</h2>
+    <form th:action="@{/students/edit/{id} (id=${student.id})}" th:object="${student}" method="post">
+      <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input type="text" class="form-control" th:field="*{firstName}" id="FirstName" placeholder="Enter First Name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="LastName">Last Name</label>
+        <input type="text" class="form-control" th:field="*{lastName}" id="LastName" placeholder="Enter Last Name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Enter Email" required>
+      </div>
+
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
